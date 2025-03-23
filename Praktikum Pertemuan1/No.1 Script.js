@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Ambil data dari localStorage saat halaman dimuat
   let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-  // Render todo list dari localStorage
+  // Render daftar tugas
   function renderTodos() {
     todoList.innerHTML = "";
     todos.forEach((todo, index) => {
@@ -17,19 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }`;
 
       li.innerHTML = `
-                <span class="flex items-center text-gray-800 text-lg">
-                    ${todo.completed ? "✅" : "📝"} ${todo.text}
-                </span>
-                <div class="flex gap-2">
-                    <button class="toggle-btn bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition-all" data-index="${index}">✔</button>
-                    <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all" data-index="${index}">✖</button>
-                </div>
-            `;
+        <span class="flex items-center text-gray-800 text-lg">
+          ${todo.completed ? "✅" : "📝"} ${todo.text}
+        </span>
+        <div class="flex gap-2">
+          <button class="toggle-btn bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition-all" data-index="${index}">✔</button>
+          <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all" data-index="${index}">✖</button>
+        </div>
+      `;
 
       todoList.appendChild(li);
     });
 
-    // Simpan perubahan ke localStorage
+    // Simpan ke localStorage
     localStorage.setItem("todos", JSON.stringify(todos));
   }
 
@@ -37,21 +37,22 @@ document.addEventListener("DOMContentLoaded", function () {
   addTodoBtn.addEventListener("click", function () {
     const text = todoInput.value.trim();
     if (text === "") return;
+
     todos.push({ text, completed: false });
     todoInput.value = "";
     renderTodos();
   });
 
-  // Event delegation untuk tombol selesai dan hapus
+  // Event delegation untuk toggle dan hapus
   todoList.addEventListener("click", function (e) {
+    const index = e.target.getAttribute("data-index");
+
     if (e.target.classList.contains("toggle-btn")) {
-      const index = e.target.getAttribute("data-index");
       todos[index].completed = !todos[index].completed;
       renderTodos();
     }
 
     if (e.target.classList.contains("delete-btn")) {
-      const index = e.target.getAttribute("data-index");
       todos.splice(index, 1);
       renderTodos();
     }
