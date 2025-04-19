@@ -1,0 +1,248 @@
+/* === Classic Elegant Theme with Light/Dark Support === */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --bg-light: #fdfcf9;
+  --bg-dark: #1f1f23;
+  --text-light: #f4f4f4;
+  --text-dark: #2a2a2a;
+  --card-light: #ffffff;
+  --card-dark: #2a2a30;
+  --primary: #2f4858;
+  --primary-hover: #223646;
+  --success: #688e26;
+  --success-hover: #57791f;
+  --gray-light: #eaeaea;
+  --gray-dark: #3d3d3d;
+  --error: #d9534f;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.container {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--card-light);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .container {
+  background-color: var(--card-dark);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.03);
+}
+
+input,
+select,
+button,
+textarea {
+  font-family: inherit;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--gray-light);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(47, 72, 88, 0.2);
+}
+
+input,
+select,
+textarea {
+  background-color: #fff;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background-color: #2f2f35;
+  color: #f9f9f9;
+  border-color: var(--gray-dark);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(47, 72, 88, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-submit {
+  background-color: var(--success);
+  margin-top: 1.5rem;
+}
+
+.btn-submit:hover {
+  background-color: var(--success-hover);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: var(--gray-light);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+}
+
+li:hover {
+  background-color: #e0e0e0;
+}
+
+body.dark-mode li {
+  background-color: #2f2f35;
+}
+
+.book-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.book-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.toggle-theme-btn {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.toggle-theme-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 0.95rem;
+  }
+
+  .book-actions {
+    flex-direction: column;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.book-author {
+  color: #666;
+}
+
+body.dark-mode .book-author {
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .book-title {
+    font-size: 1rem;
+  }
+
+  .book-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.9rem;
+  }
+
+  .book-title {
+    font-size: 0.95rem;
+  }
+
+  .toggle-theme-btn {
+    width: 100%;
+    padding: 0.6rem 1rem;
+  }
+}
